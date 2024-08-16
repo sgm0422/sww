@@ -1,0 +1,33 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "assets/sww.jpg";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Picture
+      src={heroImage}
+      alt="Astronaut in the air"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+      height={600}
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      青岛刑事辩护
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      山东雅君律师事务所合伙人、副主任律师、市南区律师协会刑事委员会委员，企业合规师（高级）。<br />
+      擅长刑事辩护、刑事控告、刑事法律风险防控、刑事合规等业务领域。<br />
+      先后参与办理大量刑事案件，有丰富的刑事业务办案经验。参与办理的案件中，不乏有在全省、全市内有重大影响的案件，高级别干部案件，疑难复杂案件等。
+      孙伟伟律师刑事办案经验丰富，刑事理论功底深厚，始终坚持“真诚待人、专业服人”的办案理念，追求专业化发展道路，工作成果显著。
+    </p>
+  </div>
+</main>

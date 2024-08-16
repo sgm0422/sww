@@ -1,0 +1,68 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "黑社会性质组织案件",
+    description:
+      "曾参与赵某某等47人组织、领导、参加黑社会性质组织案件、戚某某等15人组织、领导、参加黑社会性质组织案件、张某某等17人组织、领导、参加黑社会性质组织案件的办理，为涉案骨干成员辩护，辩护效果显著",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    title: "非法吸收公众存款案件",
+    description:
+      "参与袁某等非法吸收公众存款案件办理，在审查起诉阶段，说服检察机关变更罪名，该案由法定刑十年以上变为三年以下",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    title: "重大责任事故案件",
+    description:
+      "参与牛某某重大责任事故案件，为牛某某做无罪辩护，最终法院采纳辩护人大量观点，该案件在未取得被害人谅解书情况下，争取到有罪免罚的结果 ",
+    icon: "bx:bxs-data",
+  },
+  {
+    title: "开设赌场案件",
+    description:
+      "参与办理的李某某涉嫌开设赌场案件，在被告人已经认罪认罚并被量刑有期徒刑八个月的情况下，为被告人争取到有罪免罚的结果",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "非法经营案件",
+    description:
+      "参与办理秦某某等人非法经营案件（涉案金额数亿），为秦某争取到从犯地位，辩护效果显著",
+    icon: "bx:bxs-file-find",
+  },
+  {
+    title: "组织卖淫案件",
+    description:
+      "参与金某某等涉嫌组织卖淫案件（青岛市特大组织卖淫案件），法律意见被办案机关采纳",
+    icon: "bx:bxs-user",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    经典案例
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
