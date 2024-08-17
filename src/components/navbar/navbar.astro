@@ -9,10 +9,6 @@ const menuitems = [
     path: "/",
   },
   {
-    title: "介绍",
-    path: "/about",
-  },
-  {
     title: "案例",
     path: "/case",
   },
@@ -21,11 +17,15 @@ const menuitems = [
     path: "/blog",
   },
   {
+    title: "关于我",
+    path: "/about",
+  },
+  {
     title: "联系我",
     path: "/contact",
   },
 ];
-
+const currentPath = Astro.url.pathname;
 ---
 
 <Container>
@@ -33,7 +33,8 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">孙伟伟</span><span
+          >
+          <span class="font-bold text-slate-800">孙伟伟</span><span
             class="text-slate-500">律师</span
           >
         </a>
@@ -50,7 +51,7 @@ const menuitems = [
                   <a
                     href={item.path}
                     class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
-                    <span> {item.title}</span>
+                    <span class={currentPath == item.path ? 'font-bold' : ''}> {item.title}</span>
                   </a>
                 </li>
               </>
@@ -61,7 +62,7 @@ const menuitems = [
     </Astronav>
     <div>
       <div class="lg:flex items-center gap-4">
-        <div class="flex items-center mt-2 space-x-2 text-gray-600">
+        <div class="flex items-center mt-2 space-x-2 text-gray-600 text-xl">
           <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /> 18306481889
         </div>
       </div>

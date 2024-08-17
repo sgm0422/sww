@@ -4,22 +4,14 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import '@fontsource-variable/bricolage-grotesque';
+import { isConstructorDeclaration } from "typescript";
 
 export interface Props {
   title: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
-
-const { title } = Astro.props;
-
-const makeTitle = title
-  ? "孙伟伟律师" + " | " + title
-  : "孙伟伟律师";
+const makeTitle = '孙伟伟律师 | 青岛刑事律师';
 ---
 
 <!DOCTYPE html>
@@ -33,27 +25,11 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="孙伟伟律师 - 青岛刑事辩护."
+      description={makeTitle}
       canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
-      openGraph={{
-        basic: {
-          url: canonicalURL,
-          type: "website",
-          title: `Astroship - Starter Template for Astro`,
-          image: resolvedImageWithDomain,
-        },
-        image: {
-          alt: "Astroship Homepage Screenshot",
-        },
-      }}
     />
   </head>
-  <body>
+  <body class="bg-slate-50">
     <Navbar />
     <slot />
     <Footer />
