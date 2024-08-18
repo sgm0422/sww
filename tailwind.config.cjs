@@ -12,7 +12,15 @@ module.exports = {
           ...defaultTheme.fontFamily.sans,
         ],
       },
+      colors: {
+        primary: 'var(--sww-color-primary)',
+        secondary: 'var(--sww-color-secondary)',
+        accent: 'var(--sww-color-accent)',
+        default: 'var(--sww-color-text-default)',
+        muted: 'var(--sww-color-text-muted)',
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  darkMode: 'class',
 };

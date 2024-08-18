@@ -1,0 +1,90 @@
+<script is:inline define:vars={{ defaultTheme: "system" }}>
+  if (window.basic_script) {
+    return;
+  }
+
+  window.basic_script = true;
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
+  const initTheme = function () {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      applyTheme("dark");
+    } else {
+      applyTheme("light");
+    }
+  };
+  initTheme();
+
+  function attachEvent(selector, event, fn) {
+    const matches =
+      typeof selector === "string"
+        ? document.querySelectorAll(selector)
+        : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+  const onLoad = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
+
+    attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    });
+
+    function applyHeaderStylesOnScroll() {
+      const header = document.querySelector("#header");
+      if (!header) return;
+      if (
+        lastKnownScrollPosition > 60 &&
+        !header.classList.contains("scroll")
+      ) {
+        header.classList.add("scroll");
+      } else if (
+        lastKnownScrollPosition <= 60 &&
+        header.classList.contains("scroll")
+      ) {
+        header.classList.remove("scroll");
+      }
+      ticking = false;
+    }
+    applyHeaderStylesOnScroll();
+
+    attachEvent([document], "scroll", function () {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          applyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
+
+  const onPageShow = function () {
+    document.body.classList.remove("overflow-hidden");
+    document.getElementById("header")?.classList.remove("h-screen");
+    document.getElementById("header")?.classList.remove("expanded");
+    document.querySelector("#header nav")?.classList.add("hidden");
+  };
+
+  window.onload = onLoad;
+  window.onpageshow = onPageShow;
+</script>

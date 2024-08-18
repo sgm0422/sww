@@ -1,14 +1,12 @@
 ---
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
+import BasicScripts from "@components/basicscripts.astro";
+import CustomStyles from '@components/customstyles.astro';
 import Navbar from "@components/navbar/navbar.astro";
+import '@assets/styles/tailwind.css';
 import "@fontsource-variable/inter/index.css";
 import '@fontsource-variable/bricolage-grotesque';
-import { isConstructorDeclaration } from "typescript";
-
-export interface Props {
-  title: string;
-}
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const makeTitle = '孙伟伟律师 | 青岛刑事律师';
@@ -29,8 +27,10 @@ const makeTitle = '孙伟伟律师 | 青岛刑事律师';
       canonical={canonicalURL}
     />
   </head>
-  <body class="bg-slate-50">
+  <body class="bg-page">
     <Navbar />
+    <BasicScripts />
+    <CustomStyles />
     <slot />
     <Footer />
     <style is:global>
