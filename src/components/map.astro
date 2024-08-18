@@ -1,0 +1,19 @@
+<div class="mt-24">
+  <h2 class="text-center text-slate-500 text-lg">地址：青岛市市南区香港中路37号华夏基石A栋19楼</h2>
+  <div class="bg-black p-8 md:px-20 md:py-20 h-72 mt-10 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center" id="map"></div>
+</div>
+
+<script
+  type="text/javascript"
+  src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=G5DlNQAlSkhPxkaLI0kwqCDDaelHtjQk"
+></script>
+<script>
+  const map   = new BMapGL.Map("map");
+  const point = new BMapGL.Point(120.399646, 36.071901);
+  map.centerAndZoom(point, 15);
+  map.enableScrollWheelZoom(true);
+  
+  // 标点
+  const marker = new BMapGL.Marker(point);
+  map.addOverlay(marker);
+</script>

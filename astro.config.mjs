@@ -7,5 +7,10 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "http://www.swwlawyer.com",
-  integrations: [tailwind(), mdx(), sitemap(), icon()],
+  integrations: [
+    tailwind(),
+    mdx(),
+    sitemap(),
+    icon(),
+  ],
 });
