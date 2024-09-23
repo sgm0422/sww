@@ -8,7 +8,6 @@ image: {
 }
 publishDate: "2022-11-09 16:39"
 category: "Courses"
-author: "Marcell Ziemann"
 tags: [webdev, tailwindcss, frontend]
 ---
 

@@ -25,7 +25,7 @@ const menuitems = [
     path: "/contact",
   },
 ];
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\//g, '');
 
 export interface Props {
   id?: string;
@@ -82,7 +82,7 @@ const {
                   <a
                     href={item.path}
                     class="flex lg:px-3 py-2 items-center text-gray-600 text-xl">
-                    <span class={currentPath == item.path ? "font-bold" : ""}>
+                    <span class={currentPath == item.path.replace(/\//g, '') ? "font-bold" : ""}>
                       {" "}
                       {item.title}
                     </span>

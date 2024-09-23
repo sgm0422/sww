@@ -8,7 +8,6 @@ image: {
 }
 publishDate: "2022-11-08 11:39"
 category: "Tutorials"
-author: "Janette Lynch"
 tags: [webdev, tailwindcss, frontend]
 ---
 
