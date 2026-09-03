@@ -67,6 +67,9 @@ class ArticleResource extends Resource
                         Forms\Components\DateTimePicker::make('published_at')
                             ->label('发布时间')
                             ->default(now()),
+                        Forms\Components\Placeholder::make('views_count')
+                            ->label('阅读数')
+                            ->content(fn ($record): string => $record ? "{$record->views_count} 次" : '0 次'),
                         Forms\Components\Textarea::make('excerpt')
                             ->label('摘要')
                             ->rows(3)
@@ -103,6 +106,9 @@ class ArticleResource extends Resource
                 Tables\Columns\IconColumn::make('is_published')
                     ->label('已发布')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('views_count')
+                    ->label('阅读数')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('发布时间')
                     ->dateTime('Y-m-d H:i')

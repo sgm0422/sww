@@ -22,6 +22,7 @@
                                     <span class="badge">{{ $article->category->name }}</span>
                                 @endif
                                 <time>{{ $article->published_at->format('Y年m月d日') }}</time>
+                                <span>阅读 {{ $article->views_count }}</span>
                             </div>
                             <h2>{{ $article->title }}</h2>
                             <p>{{ $article->excerpt }}</p>

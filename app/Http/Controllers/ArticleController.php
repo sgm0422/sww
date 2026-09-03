@@ -26,6 +26,8 @@ class ArticleController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
+        $article->increment('views_count');
+
         return view('articles.show', compact('article'));
     }
 }

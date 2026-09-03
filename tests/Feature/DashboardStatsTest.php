@@ -2,11 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Filament\Widgets\SiteStatsOverview;
+use App\Filament\Widgets\SiteVisitsChart;
 use App\Models\Article;
 use App\Models\PageVisit;
 use App\Models\User;
 use App\Services\VisitStatistics;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class DashboardStatsTest extends TestCase
@@ -42,7 +45,7 @@ class DashboardStatsTest extends TestCase
         $this->assertSame(2, $stats->totalArticles());
     }
 
-    public function test_dashboard_renders_site_visit_statistics_widgets(): void
+    public function test_dashboard_widgets_render_site_visit_statistics(): void
     {
         PageVisit::create([
             'path' => '/',
@@ -55,11 +58,15 @@ class DashboardStatsTest extends TestCase
 
         $this->actingAs($user)
             ->get('/z')
-            ->assertOk()
+            ->assertOk();
+
+        Livewire::test(SiteStatsOverview::class)
             ->assertSee('今日访问')
             ->assertSee('累计访问')
             ->assertSee('文章阅读数')
-            ->assertSee('文章总数')
+            ->assertSee('文章总数');
+
+        Livewire::test(SiteVisitsChart::class)
             ->assertSee('最近 30 天访问趋势');
     }
 
