@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
-@section('title', '联系预约')
-@section('description', '联系律师进行刑事法律咨询与案件委托预约。')
+@section('title', '联系预约_青岛刑事律师孙伟伟_刑事辩护咨询与案件委托')
+@section('description', '青岛刑事律师孙伟伟的联系方式与预约方式，提供电话、邮箱及山东雅君律师事务所办公地址。刑事案件咨询请先预约并到所面谈。')
 
 @section('content')
     <section class="page-head">
@@ -26,6 +26,7 @@
                 </div>
                 <div class="feature-card">
                     <h3>办公地址</h3>
+                    <p>{{ config('site.organization') }}</p>
                     <p>{{ config('site.address') }}</p>
                     <p class="muted">来访请提前预约，凭预约信息进入。</p>
                 </div>

@@ -1,14 +1,14 @@
 @extends('layouts.site')
 
-@section('title', '首页')
-@section('description', config('site.slogan'))
+@section('title', config('site.seo_title'))
+@section('description', config('site.seo_description'))
 
 @section('content')
     <section class="hero">
         <div class="container">
-            <p class="hero-kicker">刑事辩护 · 刑事合规 · 案件代理</p>
+            <p class="hero-kicker">青岛刑事律师 · 刑事辩护 · 取保候审 · 无罪辩护</p>
             <h1>{{ config('site.slogan') }}</h1>
-            <p class="hero-text">以事实为依据，以法律为准绳，在每一个阶段为当事人争取合法权益。本页面文案均为示例，请替换为您的真实执业信息。</p>
+            <p class="hero-text">孙伟伟律师立足青岛、服务山东，专注刑事辩护、刑事控告、刑事法律风险防控与刑事合规，依法为当事人争取取保候审、不起诉、缓刑和无罪辩护等合法权益。</p>
             <div class="hero-actions">
                 <a class="btn btn-light" href="{{ route('articles.index') }}">阅读文章</a>
                 <a class="btn btn-outline" href="{{ route('contact') }}">预约咨询</a>
@@ -23,11 +23,18 @@
                 <h2>关于{{ config('site.lawyer_name') }}</h2>
             </div>
             <div class="about-preview">
-                <div>
-                    <p>这里是律师个人简介的占位内容：建议写明执业机构、执业年限、主要方向（如经济犯罪、职务犯罪、毒品犯罪、暴力犯罪等）以及办案理念。刑事辩护关乎自由与生命，律师的职责是依法提出无罪、罪轻的意见，监督办案程序，维护当事人的合法权益。</p>
-                    <a class="text-link" href="{{ route('about') }}">查看详细介绍 →</a>
+                <figure class="about-photo">
+                    <img src="{{ asset('images/sww-800.jpg') }}" width="800" height="850" alt="{{ config('site.city') }}刑事律师{{ config('site.lawyer_name') }}个人形象照">
+                </figure>
+                <div class="about-copy">
+                    @foreach (array_slice(config('site.lawyer_intro'), 0, 2) as $paragraph)
+                        <p>{{ $paragraph }}</p>
+                    @endforeach
+                    <div class="about-actions">
+                        <a class="text-link" href="{{ route('about') }}">查看详细介绍 →</a>
+                        <a class="btn btn-primary" href="{{ route('practice') }}">了解刑事业务</a>
+                    </div>
                 </div>
-                <a class="btn btn-primary" href="{{ route('practice') }}">了解刑事业务</a>
             </div>
         </div>
     </section>
@@ -49,11 +56,11 @@
                 </div>
                 <div class="feature-card">
                     <h3>审查起诉阶段</h3>
-                    <p>查阅案卷、核实证据，提出不起诉或改变定性的法律意见。</p>
+                    <p>查阅案卷、核实证据，依法提出不起诉或改变定性的法律意见，为争取无罪、罪轻结果打下基础。</p>
                 </div>
                 <div class="feature-card">
                     <h3>审判阶段辩护</h3>
-                    <p>围绕事实、证据与法律充分发表辩护意见，维护当事人的合法权利。</p>
+                    <p>围绕事实、证据与法律充分发表辩护意见，依法争取无罪、缓刑、罪轻等有利处理结果。</p>
                 </div>
                 <div class="feature-card">
                     <h3>申诉 / 再审代理</h3>

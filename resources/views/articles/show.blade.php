@@ -1,7 +1,38 @@
 @extends('layouts.site')
 
-@section('title', $article->title)
+@section('title', $article->title . '_青岛刑事律师孙伟伟')
 @section('description', $article->excerpt)
+@section('og_type', 'article')
+@section('schema')
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": @json(request()->url(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES)
+        },
+        "headline": @json($article->title, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        "description": @json($article->excerpt, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        "image": @json($article->cover_image ? asset('storage/' . $article->cover_image) : asset('images/sww-1200.jpg'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES),
+        "datePublished": @json($article->published_at->toAtomString(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES),
+        "dateModified": @json(optional($article->updated_at)->toAtomString() ?? $article->published_at->toAtomString(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES),
+        "author": {
+            "@type": "Person",
+            "name": @json(config('site.lawyer_name'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            "jobTitle": "合伙人、副主任律师",
+            "worksFor": {
+                "@type": "LegalService",
+                "name": @json(config('site.organization'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+            }
+        },
+        "publisher": {
+            "@type": "LegalService",
+            "name": @json(config('site.organization'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        }
+    }
+    </script>
+@endsection
 
 @section('content')
     <article class="post">

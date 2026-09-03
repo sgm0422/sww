@@ -203,18 +203,44 @@ img {
 .about-preview {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 34px;
+    gap: 36px;
+    padding: 30px;
     background: var(--bg);
     border-left: 4px solid var(--gold);
     border-radius: 8px;
     flex-wrap: wrap;
 }
 
+.about-photo {
+    flex: 0 0 250px;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(23, 50, 79, .16);
+}
+
+.about-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.about-copy {
+    flex: 1 1 360px;
+    min-width: 0;
+}
+
 .about-preview p {
-    max-width: 820px;
-    margin: 0 0 14px;
+    max-width: 680px;
+    margin: 0 0 18px;
+}
+
+.about-actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
 }
 
 .card-grid {
@@ -545,6 +571,21 @@ img {
 
     .hero h1 {
         font-size: 30px;
+    }
+
+    .about-preview {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+    }
+
+    .about-photo {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .about-copy {
+        flex-basis: auto;
     }
 
     .post-cover {

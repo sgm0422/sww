@@ -1,13 +1,13 @@
 @extends('layouts.site')
 
-@section('title', '法律文章')
-@section('description', '刑事法律知识、办案随笔与实务文章。')
+@section('title', '法律文章_青岛刑事律师孙伟伟_取保候审与刑事辩护实务')
+@section('description', '青岛刑事律师孙伟伟撰写的刑事辩护、取保候审、会见、阅卷等实务普法文章与办案随笔，仅供学习参考。')
 
 @section('content')
     <section class="page-head">
         <div class="container">
             <h1>法律文章</h1>
-            <p>刑事法律实务与办案随笔，文章仅供普法参考。</p>
+            <p>青岛刑事律师孙伟伟的刑事法律实务与办案随笔，围绕取保候审、刑事辩护等话题，文章仅供普法参考。</p>
         </div>
     </section>
 
